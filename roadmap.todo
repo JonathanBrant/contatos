@@ -58,7 +58,6 @@ Fazendo com que contatos sejam levantados a partir de um servico:
     
 Criação e Exibição do componente que adiciona/cria um novo contato:
     ☐ Crie o componente components/CreateContato
-    ☐ Estruture o template dele com base no https://github.com/sergiomoura/contatos-html-template/blob/main/home.html
     ☐ Estilize ele com base nos seletores #modal do arquivo https://github.com/sergiomoura/contatos-html-template/blob/main/css/home.css
     Fazendo com que o componente comece "escondido":
         ☐ Crie uma propriedade mostrandoCreateContato no componente app.component.ts e atribua a ela false
