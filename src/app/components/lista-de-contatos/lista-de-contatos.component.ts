@@ -10,10 +10,10 @@ import { ContatoService } from 'src/app/services/contato.service';
 export class ListaDeContatosComponent implements OnInit {
 
   public contatos:Contato[];
-  private cs: ContatoService = new ContatoService();
+  // private cs: ContatoService = new ContatoService();
 
-  constructor() {
-    this.contatos = this.cs.getContatos();
+  constructor(cs:ContatoService) {
+    this.contatos = cs.getContatos();
    }
 
   ngOnInit(): void {
