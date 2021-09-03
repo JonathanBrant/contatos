@@ -12,8 +12,13 @@ export class ListaDeContatosComponent implements OnInit {
   public contatos: Contato[];
   private cs:ContatoService = new ContatoService();
 
-  constructor() {
+  constructor(cs:ContatoService) {
     this.contatos = this.cs.getContatos();
+    ContatoService.onContatosMudaram.subscribe(
+      (contatos) => {
+        this.contatos = contatos;
+      }
+    )
   }
 
   ngOnInit(): void {
