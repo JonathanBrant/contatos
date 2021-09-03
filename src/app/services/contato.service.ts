@@ -1,89 +1,68 @@
 import { Injectable } from '@angular/core';
 import { Contato } from '../models/Contato';
 
-// const BASE_DE_CONTATOS:Contato[] = [
-//   {
-//     nome: "Jonathan Brant 1",
-//     email: "jonathan@teste.com",
-//     telefones: ["11111-1111", "12345-6789"]
-//   },
-//   {
-//     nome: "Jonathan Brant 2",
-//     email: "jonathan@teste.com",
-//     telefones: ["22222-2222"]
-//   },
-//   {
-//     nome: "Jonathan Brant 3",
-//     email: "jonathan@teste.com",
-//     telefones: ["33333-3333"]
-//   },
-//   {
-//     nome: "Jonathan Brant 4",
-//     email: "jonathan@teste.com",
-//     telefones: ["44444-4444"]
-//   },
-//   {
-//     nome: "Jonathan Brant 5",
-//     email: "jonathan@teste.com",
-//     telefones: ["55555-5555"]
-//   },
-//   {
-//     nome: "Jonathan Brant 6",
-//     email: "jonathan@teste.com",
-//     telefones: ["66666-6666"]
-//   },
-//   {
-//     nome: "Jonathan Brant 7",
-//     email: "jonathan@teste.com",
-//     telefones: ["77777-7777"]
-//   },
-//   {
-//     nome: "Jonathan Brant 8",
-//     email: "jonathan@teste.com",
-//     telefones: ["88888-8888"]
-//   },
-//   {
-//     nome: "Jonathan Brant 9",
-//     email: "jonathan@teste.com",
-//     telefones: ["99999-9999"]
-//   },
-//   {
-//     nome: "Jonathan Brant 0",
-//     email: "jonathan@teste.com",
-//     telefones: ["00000-0000"]
-//   },
-// ]
+const BASE_DE_CONTATOS:Contato[] = [
+  {
+    nome: "Mariana Ribeiro 1",
+    email: "mariana@teste.com",
+    telefones: ['1111 - 1111','1111 - 1111','1111 - 1111']
+  },
+  {
+    nome: "Mariana Ribeiro 2",
+    email: "mariana@teste.com",
+    telefones: ['2222 - 2222']
+  },
+  {
+    nome: "Mariana Ribeiro 3",
+    email: "mariana@teste.com",
+    telefones: ['3333 - 3333']
+  },
+  {
+    nome: "Mariana Ribeiro 4",
+    email: "mariana@teste.com",
+    telefones: ['4444 - 4444']
+  },
+  {
+    nome: "Mariana Ribeiro 5",
+    email: "mariana@teste.com",
+    telefones: ['5555 - 5555']
+  },
+  {
+    nome: "Mariana Ribeiro 6",
+    email: "mariana@teste.com",
+    telefones: ['6666 - 6666']
+  },
+  {
+    nome: "Mariana Ribeiro 9",
+    email: "mariana@teste.com",
+    telefones: ['9999 - 9999']
+  },
+  {
+    nome: "Mariana Ribeiro 7",
+    email: "mariana@teste.com",
+    telefones: ['7777 - 7777']
+  },
+  {
+    nome: "Mariana Ribeiro 8",
+    email: "mariana@teste.com",
+    telefones: ['8888 - 8888']
+  },
+]
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContatoService {
 
-  private baseDeContatos:Contato[];
-  private chave:string = "CONTATOS";
+  constructor() { }
 
-  constructor() { 
-    // carregando informações do localStorage na cchave de CONTATOS
-    let dados = window.localStorage.getItem(this.chave);
-    //Verificando se as informações existem
-    if(dados) {
-      // Existe transformando dados em array e guardando em baseDeContatos
-      this.baseDeContatos = JSON.parse(dados)
-
-    } else {
-
-      //Não exiiste
-      window.localStorage.setItem(this.chave, "[]")
-      this.baseDeContatos = [];
-    }
+  getContatos():Contato[] {
+    console.log(Math.random())
+    return BASE_DE_CONTATOS;
   }
 
-  getContatos():Contato[]{
-    return this.baseDeContatos
-  };
-
-  addContato(c:Contato):void {
-    this.baseDeContatos.push(c);
-    window.localStorage.setItem(this.chave, JSON.stringify(this.baseDeContatos))
+  addContato(c:Contato): void {
+    BASE_DE_CONTATOS.push(c);
   }
+
 }

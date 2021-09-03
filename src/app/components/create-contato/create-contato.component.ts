@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Contato } from 'src/app/models/Contato';
 import { ContatoService } from 'src/app/services/contato.service';
 
@@ -9,49 +9,51 @@ import { ContatoService } from 'src/app/services/contato.service';
 })
 export class CreateContatoComponent implements OnInit {
 
-  @Output() onCancelContatoClick:EventEmitter<null> = new EventEmitter();
+  @Output() onCancelarClick:EventEmitter<null> = new EventEmitter();
   
   novoContato:Contato = {
-    nome: "",
-    email: "",
-    telefones: [""]
+    nome:"",
+    email:"",
+    telefones:[""]
   }
 
   cs:ContatoService = new ContatoService();
 
   constructor() { }
 
-  ngOnInit(): void {
+  cancelar(){
+    console.log("Pediu para candelar");
+    this.onCancelarClick.emit()
   }
 
-  track(index:number, value:string) {
+  track(index:number, value:string){
     return index;
   }
 
-  cancelar() {
-    console.log("Cliquei para fechar o modal")
-    this.onCancelContatoClick.emit();
+  ngOnInit(): void {
   }
 
-  addTelefone():void {
-    this.novoContato.telefones.push("")
+  addTelefone():void{
+    this.novoContato.telefones.push("");
   }
 
-  removeTelefone(pos:number):void {
-    this.novoContato.telefones.splice(pos, 1)
-  }
-
-  salvar() {
+  salvar(){
     this.cs.addContato(this.novoContato);
-    if (this.novoContato.nome == "" && this.novoContato.email == "" || this.novoContato.telefones == [""]) {
-      alert("Adicione um meio de contato")
-    }
-    // this.onCancelContatoClick.emit();
+    
+    // Se quiser fazer a tela sumir depois da de adicionar o contato
+    // this.onCancelarClick.emit();
+
+    // Manter a tela e limpar os campos para a adição de um novo contato
     this.novoContato = {
       nome:"",
       email:"",
-      telefones: [""]
+      telefones:[""]
     }
+
+  }
+
+  removeTelefone(pos:number):void{
+    this.novoContato.telefones.splice(pos,1);
   }
 
 }
